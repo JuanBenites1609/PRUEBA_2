@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Monitor de Planta Interactivo</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+</head>
+<body>
+    <div class="background-container">
+        <div class="plant plant1"></div>
+        <div class="plant plant2"></div>
+        <div class="plant plant3"></div>
+    </div>
+    <div class="container">
+        <header>
+            <h1>Eco Monitor de Planta Interactivo</h1>
+            <p>Cuidando el planeta, una planta a la vez</p>
+        </header>
+        <main class="grid">
+            <section class="charts">
+                <div class="card" id="temperatureCard">
+                    <h2>Temperatura</h2>
+                    <canvas id="temperatureChart"></canvas>
+                </div>
+                <div class="card" id="humidityCard">
+                    <h2>Humedad</h2>
+                    <canvas id="humidityChart"></canvas>
+                </div>
+                <div class="card" id="soilMoistureCard">
+                    <h2>Humedad del Suelo</h2>
+                    <canvas id="soilMoistureChart"></canvas>
+                </div>
+            </section>
+            <section class="controls">
+                <div class="card">
+                    <h2>Condiciones Óptimas</h2>
+                    <div id="loginForm">
+                        <form id="login">
+                            <label for="username">Usuario:</label>
+                            <input type="text" id="username" required>
+                            <label for="password">Contraseña:</label>
+                            <input type="password" id="password" required>
+                            <button type="submit">Iniciar Sesión</button>
+                        </form>
+                    </div>
+                    <div id="idealConditions" style="display: none;">
+                        <form id="conditions">
+                            <label for="idealTemp">Temperatura Ideal (°C):</label>
+                            <input type="number" id="idealTemp" required>
+                            <label for="idealHumidity">Humedad Ideal (%):</label>
+                            <input type="number" id="idealHumidity" required>
+                            <label for="idealSoilMoisture">Humedad del Suelo Ideal (%):</label>
+                            <input type="number" id="idealSoilMoisture" required>
+                            <button type="submit">Guardar</button>
+                        </form>
+                        <button id="logout">Cerrar Sesión</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <h2>Escanea para más info</h2>
+                    <div id="qrcode"></div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p>Eco Monitor de Planta © 2023 - Cuidando el medio ambiente</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
