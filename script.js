@@ -1,3 +1,37 @@
+async function getTemperatureFromESP32() {
+  const esp32IP = 'http://192.168.1.10//temperature';  // Cambia [IP del ESP32] por la IP asignada al ESP32
+
+  try {
+    const response = await fetch(esp32IP);
+    const temperature = await response.text();
+    console.log("Temperatura:", temperature); // Muestra la temperatura obtenida
+  } catch (error) {
+    console.error("Error obteniendo temperatura del ESP32:", error);
+  }
+}
+
+async function sendDataToESP32(data) {
+  const esp32IP = 'http://192.168.1.10/receive';  // Cambia [IP del ESP32] por la IP asignada al ESP32
+
+  try {
+    const response = await fetch(esp32IP, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `data=${data}`,
+    });
+    const result = await response.text();
+    console.log(result); // Muestra la respuesta del ESP32
+  } catch (error) {
+    console.error("Error enviando datos al ESP32:", error);
+  }
+}
+
+// Llama a la función periódicamente para obtener la temperatura cada 300 ms
+setInterval(getTemperatureFromESP32, 300);
+
+
 // Datos de ejemplo
 const data = [
     { time: '00:00', temperature: 22, humidity: 60, soilMoisture: 40 },
